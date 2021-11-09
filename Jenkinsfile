@@ -4,7 +4,7 @@ pipeline {
     
     stages {
       stage('Starting Job') {
-        sh '> assessment.txt'
+        sh 'echo > assessment.txt'
       }
         
       stage('S.O. Info') {
@@ -55,6 +55,9 @@ pipeline {
     }
     
     post {
+        failure {
+            echo 'Falha na Compilação'
+        }
         success {
             echo 'Compilação finalizada'
         }
