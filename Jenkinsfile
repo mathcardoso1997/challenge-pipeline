@@ -4,7 +4,9 @@ pipeline {
     
     stages {
       stage('Starting-Job') {
-        sh 'echo > assessment.txt'
+          steps {
+              sh '> assessment.txt'
+          }
       }
         
       stage('SO-Info') {
