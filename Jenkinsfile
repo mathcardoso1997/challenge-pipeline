@@ -6,10 +6,11 @@ pipeline {
       stage('Starting Job') {
         sh '> assessment.txt'
       }
+        
       stage('S.O. Info') {
           steps {
               sh "echo '====================================' >> assessment.txt"
-              sh "echo 'Informacoes do Sistema Operacional: (( $(hostname -i) )) ' >> assessment.txt"
+              sh "echo 'Informacoes do Sistema Operacional: (( ${hostname -i} )) ' >> assessment.txt"
               sh "cat /etc/*-release >> assessment.txt"
               echo ""
           }
