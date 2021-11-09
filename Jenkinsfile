@@ -4,10 +4,10 @@ pipeline {
        
     stages {
       stage('Starting-Job') {
-           parameters {
-               choice(name: 'CHOICE', choices: ['Redhat', 'Debian'], description: 'Escolha a Distro: ') 
-           }
           steps {
+              parameters {
+                  choice(name: 'CHOICE', choices: ['Redhat', 'Debian'], description: 'Escolha a Distro: ') 
+              }
               sh '> assessment.txt'
               sh '$DISTRO = "${params.CHOICE}"'
           }
