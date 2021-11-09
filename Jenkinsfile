@@ -1,13 +1,12 @@
 pipeline {
     
     agent any
-    
-    parameters {
-        choice(name: 'CHOICE', choices: ['Redhat', 'Debian'], description: 'Escolha a Distro: ') 
-    }
-    
+       
     stages {
       stage('Starting-Job') {
+           parameters {
+               choice(name: 'CHOICE', choices: ['Redhat', 'Debian'], description: 'Escolha a Distro: ') 
+           }
           steps {
               sh '> assessment.txt'
               sh '$DISTRO = "${params.CHOICE}"'
