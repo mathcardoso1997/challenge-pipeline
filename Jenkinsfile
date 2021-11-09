@@ -5,15 +5,11 @@ pipeline {
     stages {
       stage('Starting-Job') {
           steps {
-              parameters {
-                  choice(name: 'CHOICE', choices: ['Redhat', 'Debian'], description: 'Escolha a Distro: ') 
-              }
               sh '> assessment.txt'
-              sh '$DISTRO = "${params.CHOICE}"'
           }
       }
         
-      stage('SO-Info') {
+      stage('Distro-Info') {
           steps {
               sh "echo '====================================' >> assessment.txt"
               sh "echo 'Informacoes do Sistema Operacional:' >> assessment.txt"
@@ -36,15 +32,6 @@ pipeline {
               sh "echo '====================================' >> assessment.txt"
               sh "echo 'Informacoes dos usuarios presentes no sistema:' >> assessment.txt"
               sh "cat /etc/passwd | cut -d: -f1 >> assessment.txt"
-              echo ""
-          }
-      }
-
-      stage('Distro-Info') {
-          steps {
-              sh "echo '====================================' >> assessment.txt"
-              sh "echo 'Distro utilizada no sistema:' >> assessment.txt"
-              sh "echo '$DISTRO' >> assessment.txt"
               echo ""
           }
       }
